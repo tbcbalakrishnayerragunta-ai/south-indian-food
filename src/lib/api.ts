@@ -1,20 +1,10 @@
-const BASE = '/api';
-
-function getToken() {
-  return localStorage.getItem('token');
-}
-
 async function request(path, options = {}) {
-  const token = getToken();
-
-  async function request(path, options = {}) {
   const token = getToken();
 
   const headers = {
     ...(options.headers || {}),
   };
 
-  // ✅ Important fix
   if (!(options.body instanceof FormData)) {
     headers['Content-Type'] = 'application/json';
   }
@@ -23,6 +13,7 @@ async function request(path, options = {}) {
     headers['Authorization'] = `Bearer ${token}`;
   }
 
+  // ✅ res defined here
   const res = await fetch(`${BASE}${path}`, {
     ...options,
     headers,
@@ -43,10 +34,6 @@ async function request(path, options = {}) {
   return data;
 }
 
-  if (!res.ok) throw new Error(data.error || `Request failed: ${res.status}`);
-
-  return data;
-}
 
 // 🔥 NEW FALLBACK FUNCTION
 async function getMenuWithFallback() {

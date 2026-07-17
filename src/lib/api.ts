@@ -7,19 +7,41 @@ function getToken() {
 async function request(path, options = {}) {
   const token = getToken();
 
+  async function request(path, options = {}) {
+  const token = getToken();
+
   const headers = {
-    'Content-Type': 'application/json',
     ...(options.headers || {}),
   };
 
-  if (token) headers['Authorization'] = `Bearer ${token}`;
+  // ✅ Important fix
+  if (!(options.body instanceof FormData)) {
+    headers['Content-Type'] = 'application/json';
+  }
+
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
 
   const res = await fetch(`${BASE}${path}`, {
     ...options,
     headers,
   });
 
-  const data = await res.json();
+  let data = null;
+
+  try {
+    data = await res.json();
+  } catch (err) {
+    console.warn("Empty or invalid JSON response");
+  }
+
+  if (!res.ok) {
+    throw new Error(data?.error || `Request failed: ${res.status}`);
+  }
+
+  return data;
+}
 
   if (!res.ok) throw new Error(data.error || `Request failed: ${res.status}`);
 

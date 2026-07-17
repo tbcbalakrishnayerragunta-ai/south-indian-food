@@ -1,18 +1,15 @@
-import path from 'path';
-import react from '@vitejs/plugin-react';
-import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import path from 'path'
 
 export default defineConfig({
-  base: '/', // 👈 IMPORTANT
+  base: '/south-indian-food/',
 
   plugins: [
     react(),
-    tailwindcss(),
+    tailwindcss()
   ],
-})
 
   resolve: {
     alias: {
@@ -29,4 +26,4 @@ export default defineConfig({
     port: 5173,
     host: true,
   },
-});
+})

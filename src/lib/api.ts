@@ -1,3 +1,6 @@
+function getToken() {
+  return localStorage.getItem('token');
+}
 async function request(path, options = {}) {
   const token = getToken();
 

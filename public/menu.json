@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "name": "Idli",
+    "price": 40,
+    "description": "Soft steamed rice cakes served with chutney",
+    "image_url": "https://images.unsplash.com/photo-1589302168068-964664d93dc0",
+    "badge": "Popular",
+    "available": true
+  },
+  {
+    "id": "2",
+    "name": "Dosa",
+    "price": 80,
+    "description": "Crispy rice crepe with potato filling",
+    "image_url": "https://images.unsplash.com/photo-1630383249896-4f7b0f64f4c5",
+    "badge": null,
+    "available": true
+  },
+  {
+    "id": "3",
+    "name": "Vada",
+    "price": 30,
+    "description": "Fried lentil donuts",
+    "image_url": "https://images.unsplash.com/photo-1601050690597-df0568f70950",
+    "badge": "Crispy",
+    "available": true
+  },
+  {
+    "id": "4",
+    "name": "Uttapam",
+    "price": 90,
+    "description": "Thick pancake with veggies",
+    "image_url": "https://images.unsplash.com/photo-1668236543090-82eba5ee5976",
+    "badge": null,
+    "available": true
+  }
+]

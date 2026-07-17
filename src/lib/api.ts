@@ -29,13 +29,13 @@ async function request(path, options = {}) {
 // 🔥 NEW FALLBACK FUNCTION
 async function getMenuWithFallback() {
   try {
-    // try backend first
     return await request('/menu');
   } catch (err) {
     console.warn("Backend failed, using static menu.json");
 
-    // fallback to static file (GitHub Pages)
-    const res = await fetch('/south-indian-food/menu.json');
+    const base = import.meta.env.BASE_URL; // 🔥 magic
+
+    const res = await fetch(`${base}menu.json`);
 
     if (!res.ok) throw new Error("Failed to load menu.json");
 

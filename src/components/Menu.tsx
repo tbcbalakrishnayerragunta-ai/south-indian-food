@@ -20,12 +20,15 @@ export function Menu() {
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    api.getMenu()
-      .then(setMenuItems)
-      .catch(() => {/* use static fallback */})
-      .finally(() => setLoading(false));
-  }, []);
+useEffect(() => {
+  api.getMenu()
+    .then((data) => setMenuItems(data))
+    .catch((err) => {
+      console.error(err);
+      setMenuItems([]);
+    })
+    .finally(() => setLoading(false));
+}, []);
 
   const filtered = menuItems.filter(item =>
     item.name.toLowerCase().includes(search.toLowerCase()) ||
